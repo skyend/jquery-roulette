@@ -10,10 +10,32 @@
 
 
 
+    <link href="css/roulette.css" rel="stylesheet"/>
 </head>
 <body>
 
-<canvas class="sky-roulette"/>
+<div class="sky-roulette">
+    <div data-roulette-partitions class="sky-roulette-pane">
+        <div data-part-id="1" class="sky-roulette-part">
+            A
+        </div>
+        <div data-part-id="2" class="sky-roulette-part">
+            B
+        </div>
+        <div data-part-id="3" class="sky-roulette-part">
+            C
+        </div>
+        <div data-part-id="4" class="sky-roulette-part">
+            D
+        </div>
+        <div data-part-id="5" class="sky-roulette-part">
+            E
+        </div>
+        <div data-part-id="6" class="sky-roulette-part">
+            F
+        </div>
+    </div>
+</div>
 
 <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -22,7 +44,10 @@
 <script src="./js/roulette.js"></script>
 <script>
 
-    $('.sky-roulette').skyRoulette()
+    $('.sky-roulette').skyRoulette({
+      duration : 10000,
+      spin : 100,
+    })
 </script>
 </body>
 </html>

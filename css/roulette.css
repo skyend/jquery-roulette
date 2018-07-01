@@ -1,0 +1,21 @@
+.sky-roulette {
+    margin: 100px;
+}
+
+.sky-roulette .sky-roulette-pane {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    overflow: hidden;
+}
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part {
+    display: inline-block;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #000;
+    width: 100px;
+    height: 50px;
+    box-sizing: border-box;
+    text-align: center;
+}
