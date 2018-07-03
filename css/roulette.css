@@ -6,16 +6,41 @@
     position: relative;
     display: inline-block;
     height: 50px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .sky-roulette .sky-roulette-pane .sky-roulette-part {
     display: inline-block;
     position: absolute;
     background-color: #fff;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     width: 100px;
     height: 50px;
     box-sizing: border-box;
     text-align: center;
+}
+
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part.p1 {
+    background-color: #ff7181;
+}
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part.p2 {
+    background-color: #9679ff;
+}
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part.p3 {
+    background-color: #8ee2ff;
+}
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part.p4 {
+    background-color: #8bffbb;
+}
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part.p5 {
+    background-color: #deff8a;
+}
+
+.sky-roulette .sky-roulette-pane .sky-roulette-part.p6 {
+    background-color: #ff9f52;
 }

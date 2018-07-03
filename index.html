@@ -16,22 +16,22 @@
 
 <div class="sky-roulette">
     <div data-roulette-partitions class="sky-roulette-pane">
-        <div data-part-id="1" class="sky-roulette-part">
+        <div data-part-id="1" class="sky-roulette-part p1">
             A
         </div>
-        <div data-part-id="2" class="sky-roulette-part">
+        <div data-part-id="2" class="sky-roulette-part p2">
             B
         </div>
-        <div data-part-id="3" class="sky-roulette-part">
+        <div data-part-id="3" class="sky-roulette-part p3">
             C
         </div>
-        <div data-part-id="4" class="sky-roulette-part">
+        <div data-part-id="4" class="sky-roulette-part p4">
             D
         </div>
-        <div data-part-id="5" class="sky-roulette-part">
+        <div data-part-id="5" class="sky-roulette-part p5">
             E
         </div>
-        <div data-part-id="6" class="sky-roulette-part">
+        <div data-part-id="6" class="sky-roulette-part p6">
             F
         </div>
     </div>
@@ -41,13 +41,17 @@
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
-<script src="./js/roulette.js"></script>
+
+<script src="./js/roulette.js?v=3"></script>
 <script>
 
-    $('.sky-roulette').skyRoulette({
+    var roulette = $('.sky-roulette').skyRoulette({
       duration : 10000,
       spin : 100,
     })
+
+
+    // roulette.start();
 </script>
 </body>
 </html>
