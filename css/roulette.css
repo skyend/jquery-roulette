@@ -1,5 +1,6 @@
 .sky-roulette {
     margin: 100px;
+    position: relative;
 }
 
 .sky-roulette .sky-roulette-pane {
@@ -43,4 +44,15 @@
 
 .sky-roulette .sky-roulette-pane .sky-roulette-part.p6 {
     background-color: #ff9f52;
+}
+
+.sky-roulette .capture-box {
+    position: absolute;
+    border: 3px solid #000;
+    width: 110px;
+    height: 60px;
+
+    left: calc(600px / 2 - 50px);
+    z-index: 1;
+    top: -10px;
 }

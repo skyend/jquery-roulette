@@ -10,11 +10,15 @@
 
 
 
-    <link href="css/roulette.css" rel="stylesheet"/>
+    <link href="css/roulette.css?v=1" rel="stylesheet"/>
 </head>
 <body>
 
 <div class="sky-roulette">
+
+    <div class="capture-box">
+
+    </div>
     <div data-roulette-partitions class="sky-roulette-pane">
         <div data-part-id="1" class="sky-roulette-part p1">
             A
@@ -42,12 +46,14 @@
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
 
-<script src="./js/roulette.js?v=3"></script>
+<script src="./js/roulette.js?v=6"></script>
 <script>
 
     var roulette = $('.sky-roulette').skyRoulette({
-      duration : 10000,
-      spin : 100,
+      shuffle: true,
+      stopPartIndex : 1,
+      speed : 20,
+      fps : 60,
     })
 
 

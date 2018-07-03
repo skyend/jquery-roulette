@@ -4,9 +4,10 @@
     /**
      * Option variables
      */
-    var rotationPerSec = options.rotationPerSec || 4;
+    var rotationPerSec = options.speed || 4;
     var shuffle = options.shuffle | false;
-    var stopPartIndex = 1;
+    var stopPartIndex = options.stopPartIndex || 0;
+    var fps = options.fps || 30;
 
     /**
      * Internal variable
@@ -31,7 +32,8 @@
      * Shuffle
      */
     var parts = Array.apply(null, $partitions);
-    if( shuffle ){
+    var originParts = parts;
+    if (shuffle) {
       parts = procShuffle(parts);
     }
     var shuffleResult_DEBUG = parts.map(function (p) {
@@ -49,14 +51,20 @@
     start();
 
 
+    /**
+     * Time
+     */
+    var startTime = Date.now();
+    var currentTime = null;
+    var elapseTime = 0;
+    var prevSectionElapse;
+    var rotationSectionDuration;
+    var sectionElapseTime;
+    var factorA;
+    var stopTarget = originParts[stopPartIndex];
 
-    function start(){
-      /**
-       * Time
-       */
-      var startTime = Date.now();
-      var currentTime = null;
-      var elapseTime = 0;
+    function start() {
+
 
       /**
        * Loop
@@ -65,16 +73,30 @@
         currentTime = Date.now();
 
         elapseTime = currentTime - startTime;
+        rotationSectionDuration = 1000 / vrotationPerSec;
+        sectionElapseTime = elapseTime % (rotationSectionDuration);
+        factorA = sectionElapseTime / rotationSectionDuration;
+
+
+
         render(elapseTime);
 
-        vrotationPerSec *= 0.99;
+        var half = rotationPerSec / 2;
+        if (vrotationPerSec < Math.floor(half) + stopRotationPerSec) {
 
-        if( vrotationPerSec < 1  ){
-          clearInterval(loop)
+
+          if( stopTarget._x > ( paneWidth / 2 - partWidth / 2 ) && stopTarget._x < ( paneWidth / 2 + partWidth / 2 ) ){
+            clearInterval(loop)
+          }
+
+        } else {
+          vrotationPerSec *= 0.995;
         }
 
-        if( elapseTime > 1000 * 990 ) clearInterval(loop)
-      }, 1000 / 60);
+        prevSectionElapse = sectionElapseTime;
+
+        // if( elapseTime > 1000 * 990 ) clearInterval(loop)
+      }, 1000 / fps);
     }
 
     /**
@@ -82,16 +104,10 @@
      * @param elapseTime
      */
     function render(elapseTime) {
-      var rotationSectionDuration = 1000 / vrotationPerSec;
 
-      var sectionElapseTime = elapseTime % ( rotationSectionDuration );
-
-      var factorA = sectionElapseTime / rotationSectionDuration;
-
-      // console.log('rsd', rotationSectionDuration)
-      // console.log(sectionElapseTime);
       var len = parts.length;
 
+      // console.log(sectionElapseTime, rotationSectionDuration)
 
       // vrotationPerSec = (vrotationPerSec + (stopvrotationPerSec - vrotationPerSec ) * 0.7 )
 
@@ -107,12 +123,12 @@
         x = (factorA + factorB) * paneWidth;
 
 
-
-        if( x > paneWidth ){
+        if (x > paneWidth) {
           x = x - paneWidth
         }
         // console.log(factorA, factorB, x, '1')
         cur.style.transform = 'translatex(' + x + 'px)';
+        cur._x = x;
         // cur.style.transition = 'transform 0.01666s';
 
       }
@@ -145,7 +161,7 @@
     }
 
     return {
-      start : start,
+      start: start,
     }
   }
 
